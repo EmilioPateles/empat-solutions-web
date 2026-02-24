@@ -29,3 +29,66 @@ import Layout from '../../layouts/Layout.astro';
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
   </section>
 </Layout>
+
+<section class="py-24 bg-slate-900/50 border-t border-slate-800 relative z-10 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[80px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-8">Zaufali nam</h2>
+
+      <div id="testimonial-wrapper" class="relative min-h-[250px] md:min-h-[200px] flex items-center justify-center">
+
+        <div class="testimonial-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-100 translate-x-0 flex flex-col justify-center items-center">
+          <svg class="w-12 h-12 text-cyan-500/20 mb-6 mx-auto" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
+          <p class="text-2xl md:text-3xl font-medium text-slate-200 italic mb-8 leading-relaxed max-w-3xl">
+            "Szkolenie otworzyło mi oczy i pomogło zrozumieć możliwości, które daje sztuczna inteligencja."
+          </p>
+          <div>
+            <div class="text-white font-bold text-lg">Wiktoria Papała</div>
+            <div class="text-cyan-400">Właścicielka, Papaja Tatuaże</div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 translate-x-8 pointer-events-none flex flex-col justify-center items-center">
+          <svg class="w-12 h-12 text-cyan-500/20 mb-6 mx-auto" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
+          <p class="text-2xl md:text-3xl font-medium text-slate-200 italic mb-8 leading-relaxed max-w-3xl">
+            "Dzięki Emilowi znalazłam przyjaciela idealnego."
+          </p>
+          <div>
+            <div class="text-white font-bold text-lg">Iza Dudzik</div>
+            <div class="text-cyan-400">Ilustratorka / Praktykantka</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.testimonial-slide');
+      let currentIdx = 0;
+
+      if(slides.length > 1) {
+        setInterval(() => {
+          // Ukryj obecny (odjeżdża w lewo)
+          slides[currentIdx].classList.remove('opacity-100', 'translate-x-0');
+          slides[currentIdx].classList.add('opacity-0', '-translate-x-8', 'pointer-events-none');
+          
+          // Następny slajd
+          currentIdx = (currentIdx + 1) % slides.length;
+          
+          // Reset pozycji przed wjazdem
+          slides[currentIdx].classList.remove('-translate-x-8');
+          slides[currentIdx].classList.add('translate-x-8');
+          
+          // Mikrosekunda przerwy na render i wjazd z prawej
+          setTimeout(() => {
+            slides[currentIdx].classList.remove('opacity-0', 'translate-x-8', 'pointer-events-none');
+            slides[currentIdx].classList.add('opacity-100', 'translate-x-0');
+          }, 50);
+
+        }, 6000); 
+      }
+    });
+  </script>
