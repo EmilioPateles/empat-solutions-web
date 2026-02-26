@@ -1,0 +1,176 @@
+---
+const { lang } = Astro.props;
+const currentYear = new Date().getFullYear();
+
+// Potężny słownik zawierający treści do Modali dla obu języków
+const content = {
+  pl: {
+    rights: "Wszelkie prawa zastrzeżone.",
+    privacyBtn: "Polityka Prywatności",
+    termsBtn: "Regulamin",
+    close: "Zamknij",
+    privacyHtml: `
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">I. Postanowienia Ogólne</h3>
+      <p class="mb-4">Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych przekazanych przez Użytkowników w związku z korzystaniem ze strony EMPAT Solutions.</p>
+      <p class="mb-4">Administratorem Danych Osobowych jest EMPAT Solutions, NIP: 7661923107, REGON: 523567957.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">II. Cel przetwarzania danych</h3>
+      <p class="mb-4">Dane osobowe (np. imię, adres e-mail) podawane w formularzu kontaktowym przetwarzane są wyłącznie w celu obsługi zapytania i udzielenia odpowiedzi (art. 6 ust. 1 lit. f RODO).</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">III. Prawa Użytkownika</h3>
+      <ul class="list-disc pl-5 mb-4 space-y-2">
+        <li>Prawo dostępu do swoich danych oraz otrzymania ich kopii.</li>
+        <li>Prawo do sprostowania, usunięcia lub ograniczenia przetwarzania.</li>
+        <li>Prawo do wniesienia sprzeciwu oraz wniesienia skargi do UODO.</li>
+      </ul>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">IV. Ciasteczka (Cookies)</h3>
+      <p class="mb-4">Serwis zbiera w sposób automatyczny wyłącznie informacje zawarte w plikach cookies w celu dostosowania zawartości oraz optymalizacji. Użytkownik może w każdej chwili zablokować cookies w ustawieniach przeglądarki.</p>
+    `,
+    termsHtml: `
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">I. Postanowienia ogólne</h3>
+      <p class="mb-4">Regulamin określa zasady korzystania z serwisu EMPAT Solutions. Właścicielem jest EMPAT Solutions, NIP: 7661923107, REGON: 523567957.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">II. Wymagania techniczne</h3>
+      <p class="mb-4">Do korzystania z serwisu niezbędne jest urządzenie z dostępem do Internetu oraz zaktualizowana przeglądarka z włączoną obsługą JavaScript i Cookies.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">III. Usługi i Formularz</h3>
+      <p class="mb-4">Usługodawca umożliwia bezpłatne przeglądanie treści oraz korzystanie z interaktywnego formularza kontaktowego w celu przesłania zapytań.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">IV. Reklamacje</h3>
+      <p class="mb-4">Wszelkie reklamacje można zgłaszać na adres e-mail: info@empat.me Rozpatrzenie następuje w terminie do 14 dni.</p>
+    `
+  },
+  en: {
+    rights: "All rights reserved.",
+    privacyBtn: "Privacy Policy",
+    termsBtn: "Terms of Service",
+    close: "Close",
+    privacyHtml: `
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">I. General Provisions</h3>
+      <p class="mb-4">This Privacy Policy sets out the rules for processing and protecting personal data provided by Users of the EMPAT Solutions website.</p>
+      <p class="mb-4">The Data Controller is EMPAT Solutions, VAT ID: PL7661923107.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">II. Purpose of processing</h3>
+      <p class="mb-4">Personal data provided in the contact form is processed solely to handle inquiries and provide answers (Article 6(1)(f) GDPR).</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">III. User Rights</h3>
+      <ul class="list-disc pl-5 mb-4 space-y-2">
+        <li>Right to access data and receive a copy.</li>
+        <li>Right to rectify, delete, or restrict processing.</li>
+        <li>Right to object and lodge a complaint with the supervisory authority.</li>
+      </ul>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">IV. Cookies</h3>
+      <p class="mb-4">The website automatically collects only information contained in cookies to optimize user experience. You can block cookies in your browser settings at any time.</p>
+    `,
+    termsHtml: `
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">I. General Provisions</h3>
+      <p class="mb-4">These Terms define the rules for using the EMPAT Solutions website. The owner is EMPAT Solutions, VAT ID: PL7661923107.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">II. Technical Requirements</h3>
+      <p class="mb-4">To use the website, you need an internet-connected device and an updated browser with JavaScript and Cookies enabled.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">III. Services</h3>
+      <p class="mb-4">The provider allows free browsing of content and the use of an interactive contact form to send inquiries.</p>
+      
+      <h3 class="text-xl font-bold text-white mt-6 mb-3">IV. Complaints</h3>
+      <p class="mb-4">Any complaints can be reported to the e-mail address: info@empat.me They will be processed within 14 days.</p>
+    `
+  }
+};
+
+const t = content[lang] || content.pl;
+---
+
+<footer class="bg-slate-950 py-8 border-t border-slate-800 text-center relative z-10">
+  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+    <div class="mb-4 md:mb-0">
+      <span class="text-cyan-500 font-bold">EMPAT</span> Solutions &copy; {currentYear}. {t.rights}
+    </div>
+<div class="flex items-center gap-6">
+      
+      <button 
+        data-modal-target="privacy-modal" 
+        class="hover:text-cyan-400 transition-colors cursor-pointer bg-transparent border-none p-0"
+      >
+        {t.privacyBtn}
+      </button>
+
+      <div class="h-6 w-px bg-slate-700"></div>
+
+      <button 
+        data-modal-target="terms-modal" 
+        class="hover:text-cyan-400 transition-colors cursor-pointer bg-transparent border-none p-0"
+      >
+        {t.termsBtn}
+      </button>
+
+    </div>
+  </div>
+</footer>
+
+<div id="privacy-modal" class="legal-modal fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+  <div class="modal-backdrop absolute inset-0 bg-slate-950/80 backdrop-blur-sm cursor-pointer"></div>
+  <div class="modal-content relative bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto p-8 shadow-2xl transform scale-95 transition-transform duration-300 mx-4 text-left">
+    <button class="modal-close absolute top-6 right-6 text-slate-500 hover:text-white transition-colors">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <h2 class="text-3xl font-bold text-white mb-2">{t.privacyBtn}</h2>
+    <div class="h-1 w-20 bg-cyan-500 rounded mb-6"></div>
+    <div class="text-slate-300 leading-relaxed" set:html={t.privacyHtml}></div>
+  </div>
+</div>
+
+<div id="terms-modal" class="legal-modal fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+  <div class="modal-backdrop absolute inset-0 bg-slate-950/80 backdrop-blur-sm cursor-pointer"></div>
+  <div class="modal-content relative bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto p-8 shadow-2xl transform scale-95 transition-transform duration-300 mx-4 text-left">
+    <button class="modal-close absolute top-6 right-6 text-slate-500 hover:text-white transition-colors">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <h2 class="text-3xl font-bold text-white mb-2">{t.termsBtn}</h2>
+    <div class="h-1 w-20 bg-cyan-500 rounded mb-6"></div>
+    <div class="text-slate-300 leading-relaxed" set:html={t.termsHtml}></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const openButtons = document.querySelectorAll('[data-modal-target]');
+    const closeButtons = document.querySelectorAll('.modal-close');
+    const backdrops = document.querySelectorAll('.modal-backdrop');
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.querySelector('.modal-content').classList.remove('scale-95');
+        document.body.style.overflow = 'hidden'; // Blokada przewijania tła
+      }
+    }
+
+    function closeAllModals() {
+      document.querySelectorAll('.legal-modal').forEach(modal => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.querySelector('.modal-content').classList.add('scale-95');
+      });
+      document.body.style.overflow = ''; // Odblokowanie przewijania tła
+    }
+
+    // Otwieranie po kliknięciu w linki w stopce
+    openButtons.forEach(btn => {
+      btn.addEventListener('click', () => openModal(btn.getAttribute('data-modal-target')));
+    });
+
+    // Zamykanie po kliknięciu 'X'
+    closeButtons.forEach(btn => btn.addEventListener('click', closeAllModals));
+
+    // Zamykanie po kliknięciu w rozmyte tło
+    backdrops.forEach(backdrop => backdrop.addEventListener('click', closeAllModals));
+
+    // Zamykanie klawiszem ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllModals();
+    });
+  });
+</script>
