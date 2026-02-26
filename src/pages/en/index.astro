@@ -1,93 +1,265 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 ---
 
-<Layout title="Home" lang="en">
-  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
-          Growth powered by <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Artificial Intelligence</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-300 mb-10">
-          We optimize processes, increase efficiency, and implement secure AI solutions for your business. Step up your operational game.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="/en/contact" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-8 py-3 rounded-md font-bold transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)]">
-            Start the transformation
-          </a>
-          <a href="/en/projects" class="border border-slate-600 hover:border-cyan-400 text-white px-8 py-3 rounded-md font-bold transition-all duration-300">
-            View our projects
-          </a>
+<Layout title="EMPAT Solutions" lang="en">
+  
+  <div id="home">
+    <section class="min-h-[90vh] flex flex-col bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 pt-32 pb-8">
+      
+      <div class="flex-grow flex flex-col justify-center items-center w-full px-4 pb-12 text-center">
+        <div class="max-w-4xl mx-auto animate-on-load opacity-0 translate-y-8 transition-all duration-1000 ease-out">
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
+            Growth driven by <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Artificial Intelligence</span>
+          </h1>
+          <p class="text-lg md:text-xl text-slate-300 mb-10">
+            We optimize processes, increase productivity, and implement secure AI solutions for your company. Boost operational efficiency, and spend the saved time relaxing at a SPA or taking a quick trip to the seaside.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)]">
+              Free Consultation
+            </a>
+            <a href="#projects" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors border border-slate-700">
+              See Case Studies
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full border-y border-slate-700 bg-slate-900/50 py-6 overflow-hidden logo-carousel-container">
+        <div class="flex flex-nowrap w-max animate-marquee hover:[animation-play-state:paused]">
+          
+          <div class="flex flex-nowrap items-center gap-16 px-8 shrink-0">
+            <Image src="/logo-1.png" alt="Technology 1" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-2.png" alt="Technology 2" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-3.png" alt="Technology 3" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-4.png" alt="Technology 4" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-5.png" alt="Technology 5" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-6.png" alt="Technology 6" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-7.png" alt="Technology 7" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-8.png" alt="Technology 8" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-9.png" alt="Technology 9" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-10.png" alt="Technology 10" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-11.png" alt="Technology 11" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-12.png" alt="Technology 12" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-13.png" alt="Technology 13" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+          </div>
+
+          <div class="flex flex-nowrap items-center gap-16 px-8 shrink-0" aria-hidden="true">
+            <Image src="/logo-1.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-2.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-3.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-4.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-5.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-6.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-7.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-8.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-9.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-10.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-11.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-12.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+            <Image src="/logo-13.png" alt="" width={120} height={40} loading="eager" fetchpriority="high" class="shrink-0 h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-900/30 border-b border-slate-800 relative z-10 overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 text-center animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">
+        <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-8">Trusted By</h2>
+        <div id="testimonial-wrapper" class="relative min-h-[200px] flex items-center justify-center">
+          <div class="testimonial-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-100 translate-x-0 flex flex-col justify-center items-center">
+            <p class="text-2xl font-medium text-slate-200 italic mb-6 max-w-3xl">"The training opened my eyes and helped me understand the possibilities that artificial intelligence offers."</p>
+            <div>
+              <div class="text-white font-bold text-lg">Wiktoria Papała</div>
+              <div class="text-cyan-400">Owner, Papaja Tatuaże</div>
+            </div>
+          </div>
+          <div class="testimonial-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 translate-x-8 pointer-events-none flex flex-col justify-center items-center">
+            <p class="text-2xl font-medium text-slate-200 italic mb-6 max-w-3xl">"Thanks to Emil, I found the perfect partner."</p>
+            <div>
+              <div class="text-white font-bold text-lg">Iza Dudzik</div>
+              <div class="text-cyan-400">Intern, Papaja Tatuaże / Illustrator</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="about" class="py-24 bg-slate-800/30 border-t border-slate-800 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">
+        <div class="bg-slate-800/80 aspect-square rounded-2xl border border-slate-700 flex items-center justify-center shadow-xl">
+          <span class="text-slate-500">[Founder's Photo Placeholer]</span>
+        </div>
+        <div>
+          <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-3">About the Founder</h2>
+          <h3 class="text-4xl font-bold text-white mb-6">Practice, Concrete Solutions, Measurable Results.</h3>
+          <p class="text-slate-400 text-lg leading-relaxed mb-6">
+            My name is Dr. Eng. Emil Patelski. I don't complicate things. I create solutions that take over tedious processes in your company. My philosophy is simple: You are the driver, we provide the engine. We take the technology off your shoulders so you can focus on maximizing profits.
+          </p>
         </div>
       </div>
     </div>
-
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
   </section>
-</Layout>
 
-<section class="py-24 bg-slate-900/50 border-t border-slate-800 relative z-10 overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[80px] pointer-events-none"></div>
+  <section id="projects" class="py-24 bg-slate-900 border-t border-slate-800 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">
+        <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-3">Case Studies</h2>
+        <h3 class="text-4xl font-bold text-white">Concrete solutions to problems</h3>
+      </div>
+      
+      <div class="bg-slate-800/40 border border-slate-700 rounded-2xl overflow-hidden shadow-2xl transition-all hover:border-cyan-500/50 animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out delay-100">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div class="p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-slate-700">
+            <h4 class="text-3xl font-bold text-white mb-4">AI in Creative Marketing</h4>
+            
+            <div class="flex items-center gap-4 mb-6">
+              <h5 class="text-xl text-slate-300 font-medium m-0">Client: <span class="text-white">Papaja Tatuaże</span></h5>
+              <div class="h-16 w-px bg-slate-700"></div>
+              <img src="/papaja-logo.png" alt="Papaja Tatuaże Logo" loading="lazy" class="h-32 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" />
+            </div>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-8">Trusted by</h2>
-
-      <div id="testimonial-wrapper" class="relative min-h-[250px] md:min-h-[200px] flex items-center justify-center">
-
-        <div class="testimonial-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-100 translate-x-0 flex flex-col justify-center items-center">
-          <svg class="w-12 h-12 text-cyan-500/20 mb-6 mx-auto" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
-          <p class="text-2xl md:text-3xl font-medium text-slate-200 italic mb-8 leading-relaxed max-w-3xl">
-            "The training opened my eyes and helped me understand the possibilities that artificial intelligence offers."
-          </p>
-          <div>
-            <div class="text-white font-bold text-lg">Wiktoria Papała</div>
-            <div class="text-cyan-400">Papaja Tattoo Owner</div>
+            <p class="text-slate-400 mb-8 leading-relaxed">
+              As part of our collaboration, we demonstrated how AI-powered tools can support marketing activities and drastically increase social media reach.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start text-slate-300">
+                <svg class="w-6 h-6 shrink-0 text-cyan-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Creating video scripts for TikTok and Reels.
+              </li>
+              <li class="flex items-start text-slate-300">
+                <svg class="w-6 h-6 shrink-0 text-cyan-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                Intelligent video and audio post-production.
+              </li>
+            </ul>
+          </div>
+          <div class="p-8 lg:p-12 bg-slate-800/80 flex flex-col justify-center">
+            <h4 class="text-xl font-bold text-white mb-4">Operational Impact</h4>
+            <p class="text-slate-400 leading-relaxed">
+              We optimized the time required to produce promotional materials, directly translating into increased reach and much deeper client interaction.
+            </p>
           </div>
         </div>
-
-        <div class="testimonial-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 translate-x-8 pointer-events-none flex flex-col justify-center items-center">
-          <svg class="w-12 h-12 text-cyan-500/20 mb-6 mx-auto" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
-          <p class="text-2xl md:text-3xl font-medium text-slate-200 italic mb-8 leading-relaxed max-w-3xl">
-            "Thanks to Emil, I found the perfect friend."
-          </p>
-          <div>
-            <div class="text-white font-bold text-lg">Iza Dudzik</div>
-            <div class="text-cyan-400">Illustrator / Papaja Tattoo Intern</div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
+
+  <section id="faq" class="py-24 bg-slate-800/30 border-t border-slate-800 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-3 text-center animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">Have questions?</h2>
+      <h3 class="text-4xl font-bold text-white mb-12 text-center animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">Frequently Asked Questions</h3>
+      
+      <div class="space-y-6">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-cyan-500/30 transition-colors animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">
+          <h4 class="text-xl font-bold text-white mb-3">Is my company ready for AI?</h4>
+          <p class="text-slate-400">Yes. You don't need advanced IT infrastructure. We start with simple tools that immediately deliver a return on investment (ROI).</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-cyan-500/30 transition-colors animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out delay-100">
+          <h4 class="text-xl font-bold text-white mb-3">How long does implementation take?</h4>
+          <p class="text-slate-400">Basic automations can be implemented in a few days. Building a comprehensive customized "Digital Employee" usually takes 2-4 weeks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-slate-900 border-t border-slate-800 scroll-mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll opacity-0 translate-y-12 transition-all duration-700 ease-out">
+      <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-3">Let's Get Started</h2>
+      <h3 class="text-4xl font-bold text-white mb-12">Contact Us</h3>
+
+      <form class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 mb-16 text-left max-w-2xl mx-auto">
+        <div class="space-y-6">
+          <div>
+            <label for="en-name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+            <input type="text" id="en-name" name="name" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="John Doe">
+          </div>
+          <div>
+            <label for="en-email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+            <input type="email" id="en-email" name="email" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="john@company.com">
+          </div>
+          <div>
+            <label for="en-message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+            <textarea id="en-message" name="message" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="How can we help?"></textarea>
+          </div>
+          <button type="button" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-4 rounded-lg transition-colors">
+            Send Message
+          </button>
+        </div>
+      </form>
+
+      <div class="pt-12 border-t border-slate-800">
+        <h4 class="text-2xl font-bold text-white mb-4">Prefer faster contact?</h4>
+        <p class="text-slate-400 mb-8">Message me directly on WhatsApp. I respond faster than any form.</p>
+        <a href="https://wa.me/+48512105610?text=Hi%20Emil,%20I'd%20like%20to%20talk%20about%20automation." 
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1EBE55] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_15px_rgba(37,211,102,0.3)] hover:shadow-[0_0_25px_rgba(37,211,102,0.6)]">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937 0 3.825-3.113 6.938-6.938 6.938z"/></svg>
+          Message me on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .animate-marquee {
+      animation: marquee 60s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. Inicjalizacja Animacji Scrolla
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-12');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Animacja Hero Section
+      setTimeout(() => {
+        const hero = document.querySelector('.animate-on-load');
+        if (hero) {
+          hero.classList.remove('opacity-0', 'translate-y-8');
+          hero.classList.add('opacity-100', 'translate-y-0');
+        }
+      }, 100);
+
+      // 2. Rotator
       const slides = document.querySelectorAll('.testimonial-slide');
       let currentIdx = 0;
-
       if(slides.length > 1) {
         setInterval(() => {
-          // Ukryj obecny (odjeżdża w lewo)
           slides[currentIdx].classList.remove('opacity-100', 'translate-x-0');
           slides[currentIdx].classList.add('opacity-0', '-translate-x-8', 'pointer-events-none');
-          
-          // Następny slajd
           currentIdx = (currentIdx + 1) % slides.length;
-          
-          // Reset pozycji przed wjazdem
           slides[currentIdx].classList.remove('-translate-x-8');
           slides[currentIdx].classList.add('translate-x-8');
-          
-          // Mikrosekunda przerwy na render i wjazd z prawej
           setTimeout(() => {
             slides[currentIdx].classList.remove('opacity-0', 'translate-x-8', 'pointer-events-none');
             slides[currentIdx].classList.add('opacity-100', 'translate-x-0');
           }, 50);
-
         }, 6000); 
       }
     });
   </script>
+
+</Layout>
