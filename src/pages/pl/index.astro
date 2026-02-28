@@ -175,23 +175,30 @@ import { Image } from 'astro:assets';
       <h2 class="text-sm font-bold tracking-widest text-cyan-500 uppercase mb-3">Rozpocznijmy</h2>
       <h3 class="text-4xl font-bold text-white mb-12">Skontaktuj się z nami</h3>
 
-<form class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 mb-16 text-left max-w-2xl mx-auto">
+<form id="contact-form" class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 mb-16 text-left max-w-2xl mx-auto">
+        
+        <input type="hidden" name="access_key" value="bb8fa602-ed0d-4c8f-a8a9-bbabcd828ce8">
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
         <div class="space-y-6">
           <div>
-            <label for="imie" class="block text-sm font-medium text-slate-300 mb-2">Imię i Nazwisko</label>
-            <input type="text" id="imie" name="imie" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="Jan Kowalski">
+            <label for="pl-name" class="block text-sm font-medium text-slate-300 mb-2">Imię i nazwisko</label>
+            <input type="text" id="pl-name" name="name" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="Jan Kowalski">
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-            <input type="email" id="email" name="email" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="jan@firma.pl">
+            <label for="pl-email" class="block text-sm font-medium text-slate-300 mb-2">Adres e-mail</label>
+            <input type="email" id="pl-email" name="email" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="jan@firma.pl">
           </div>
           <div>
-            <label for="wiadomosc" class="block text-sm font-medium text-slate-300 mb-2">Wiadomość</label>
-            <textarea id="wiadomosc" name="wiadomosc" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="W czym możemy pomóc?"></textarea>
+            <label for="pl-message" class="block text-sm font-medium text-slate-300 mb-2">Wiadomość</label>
+            <textarea id="pl-message" name="message" rows="4" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500" placeholder="W czym możemy pomóc?"></textarea>
           </div>
-          <button type="button" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-4 rounded-lg transition-colors">
-            Wyślij Wiadomość
+          
+          <button type="submit" id="submit-btn" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold py-4 rounded-lg transition-colors flex justify-center items-center">
+            <span>Wyślij wiadomość</span>
           </button>
+
+          <p id="form-result" class="text-center text-sm font-bold hidden mt-4"></p>
         </div>
       </form>
 
@@ -218,7 +225,7 @@ import { Image } from 'astro:assets';
     }
   </style>
 
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Inicjalizacja Animacji Scrolla
       const observer = new IntersectionObserver((entries) => {
@@ -235,7 +242,7 @@ import { Image } from 'astro:assets';
         observer.observe(el);
       });
 
-      // Animacja Hero Section zaraz po załadowaniu
+      // Animacja Hero Section
       setTimeout(() => {
         const hero = document.querySelector('.animate-on-load');
         if (hero) {
@@ -244,7 +251,7 @@ import { Image } from 'astro:assets';
         }
       }, 100);
 
-      // 2. Rotator (Zaufali nam)
+      // 2. Rotator (Opinie)
       const slides = document.querySelectorAll('.testimonial-slide');
       let currentIdx = 0;
       if(slides.length > 1) {
@@ -259,6 +266,79 @@ import { Image } from 'astro:assets';
             slides[currentIdx].classList.add('opacity-100', 'translate-x-0');
           }, 50);
         }, 6000); 
+      }
+
+      // 3. Web3Forms - Obsługa formularza kontaktowego
+      const form = document.getElementById('contact-form');
+      const result = document.getElementById('form-result');
+      const submitBtn = document.getElementById('submit-btn');
+      
+      if(form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Blokujemy domyślne przeładowanie strony
+          
+          const btnText = submitBtn ? submitBtn.querySelector('span') : null;
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+
+          // Stan ładowania - UI
+          result.classList.remove('hidden', 'text-red-500', 'text-green-500');
+          result.classList.add('text-cyan-400');
+          result.innerHTML = "Trwa wysyłanie...";
+          if(btnText) btnText.innerHTML = "Przetwarzanie...";
+          submitBtn.disabled = true;
+          submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+          // Strzał do API
+          fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: json
+          })
+          .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                  // Sukces
+                  result.classList.remove('text-cyan-400', 'text-red-500');
+                  result.classList.add('text-green-500');
+                  result.innerHTML = "Wiadomość wysłana! Odezwiemy się wkrótce.";
+                  if(btnText) btnText.innerHTML = "Wysłano pomyślnie";
+                  form.reset(); // Czyszczenie pól po wysłaniu
+              } else {
+                  // Błąd z serwera
+                  console.log(response);
+                  result.classList.remove('text-cyan-400', 'text-green-500');
+                  result.classList.add('text-red-500');
+                  result.innerHTML = json.message || "Coś poszło nie tak. Spróbuj ponownie.";
+                  if(btnText) btnText.innerHTML = "Wyślij wiadomość";
+                  submitBtn.disabled = false;
+                  submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+              }
+          })
+          .catch(error => {
+              // Błąd sieci/internetu
+              console.log(error);
+              result.classList.remove('text-cyan-400', 'text-green-500');
+              result.classList.add('text-red-500');
+              result.innerHTML = "Błąd połączenia. Sprawdź internet i spróbuj ponownie.";
+              if(btnText) btnText.innerHTML = "Wyślij wiadomość";
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+          })
+          .then(function() {
+              // Ukryj komunikat po 6 sekundach
+              setTimeout(() => {
+                  result.classList.add('hidden');
+                  if(!submitBtn.disabled && btnText) {
+                     btnText.innerHTML = "Wyślij wiadomość";
+                  }
+              }, 6000);
+          });
+        });
       }
     });
   </script>
