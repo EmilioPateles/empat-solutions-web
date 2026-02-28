@@ -6,21 +6,34 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  description?: string;
   lang?: string;
 }
 
-const { title, lang = 'pl' } = Astro.props;
+const { 
+  title, 
+  description = "Automatyzujemy procesy i wdrażamy sztuczną inteligencję (AI), by skalować Twój biznes. Odzyskaj czas, zredukuj koszty i wyprzedź konkurencję z EMPAT Solutions.", 
+  lang = 'pl' 
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="EMPAT Solutions - Rozwój napędzany przez Sztuczną Inteligencję" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    
     <title>{title} | EMPAT Solutions</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="dr inż. Emil Patelski" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | EMPAT Solutions`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="EMPAT Solutions" />
+    <meta property="og:image" content="/og-image.jpg" />
   </head>
   <body class="bg-slate-900 text-slate-300 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200 flex flex-col min-h-screen">
     <Header lang={lang} />
