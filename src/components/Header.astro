@@ -11,7 +11,7 @@ const pathTranslations: Record<string, string> = {
   '/en': '/pl/',
 };
 
-// Nawigacja kotwicami (Zaktualizowana o Usługi/Services)
+// Nawigacja
 const nav = {
   pl: [
     { title: "Home", url: "#home" },
@@ -45,17 +45,15 @@ const switchLangText = lang === 'pl' ? "EN" : "PL";
       
       <div class="flex-shrink-0 flex items-center">
         <a href={lang === 'pl' ? "/pl/" : "/en/"} aria-label="EMPAT Solutions - Home" class="focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded">
-         
           <Image 
-  src="/logo.png" 
-  alt="EMPAT Solutions Logo" 
-  width={200} 
-  height={50} 
-  loading="eager" 
-  fetchpriority="high" 
-  class="h-20 w-auto object-contain rounded-2xl" 
-/>
-          
+            src="/logo.png" 
+            alt="EMPAT Solutions Logo" 
+            width={200} 
+            height={50} 
+            loading="eager" 
+            fetchpriority="high" 
+            class="h-20 w-auto object-contain rounded-2xl" 
+          />
         </a>
       </div>
 
@@ -71,13 +69,57 @@ const switchLangText = lang === 'pl' ? "EN" : "PL";
         <a href={switchLangUrl} class="text-slate-400 hover:text-white font-bold px-3 py-1 border border-slate-700 rounded-md transition-colors hover:border-cyan-500">
           {switchLangText}
         </a>
-        
         <a href={btnLink} class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-6 py-2 rounded-md font-bold transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)]">
           {btnText}
         </a>
       </div>
 
+      <div class="flex md:hidden items-center space-x-3">
+        <a href={switchLangUrl} class="text-slate-400 hover:text-white font-bold px-3 py-1 border border-slate-700 rounded-md transition-colors hover:border-cyan-500">
+          {switchLangText}
+        </a>
+        <button id="mobile-menu-btn" aria-label="Menu" class="text-slate-300 hover:text-cyan-400 focus:outline-none p-2 rounded-md border border-transparent hover:border-slate-700">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-0 w-full bg-slate-900 border-b border-slate-800 shadow-2xl">
+    <div class="flex flex-col px-4 pt-2 pb-6 space-y-3">
+      {currentNav.map(item => (
+        <a href={item.url} class="mobile-link text-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800 px-4 py-3 rounded-md font-medium transition-colors">
+          {item.title}
+        </a>
+      ))}
+      <a href={btnLink} class="mobile-link mt-4 text-center bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-6 py-3 rounded-md font-bold transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+        {btnText}
+      </a>
     </div>
   </div>
 </header>
 <div class="h-24"></div>
+
+<script>
+  // Czekamy na załadowanie DOM (Astro obsługuje to natywnie dla tagu script)
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-link');
+
+  if (btn && menu) {
+    // Rozwijanie/Zwijanie po kliknięciu w hamburgera
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Automatyczne zwijanie po kliknięciu w jakikolwiek link (żeby menu nie zasłaniało wybranej sekcji)
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  }
+</script>
