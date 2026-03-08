@@ -6,12 +6,12 @@ const { lang = 'pl' } = Astro.props;
 const pathname = Astro.url.pathname;
 const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 
+// ZAKTUALIZOWANE ŚCIEŻKI (PL to teraz główny katalog / )
 const pathTranslations: Record<string, string> = {
-  '/pl': '/en/',
-  '/en': '/pl/',
+  '/': '/en/',
+  '/en': '/',
 };
 
-// Nawigacja
 const nav = {
   pl: [
     { title: "Home", url: "#home" },
@@ -35,7 +35,8 @@ const currentNav = nav[lang as keyof typeof nav];
 const btnText = lang === 'pl' ? "Darmowa Konsultacja" : "Free Consultation";
 const btnLink = "#kontakt"; 
 
-const switchLangUrl = pathTranslations[currentPath] || (lang === 'pl' ? "/en/" : "/pl/");
+// ZAKTUALIZOWANE PRZEŁĄCZANIE JĘZYKA
+const switchLangUrl = pathTranslations[currentPath] || (lang === 'pl' ? "/en/" : "/");
 const switchLangText = lang === 'pl' ? "EN" : "PL";
 ---
 
@@ -44,7 +45,7 @@ const switchLangText = lang === 'pl' ? "EN" : "PL";
     <div class="flex justify-between items-center h-24">
       
       <div class="flex-shrink-0 flex items-center">
-        <a href={lang === 'pl' ? "/pl/" : "/en/"} aria-label="EMPAT Solutions - Home" class="focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded">
+        <a href={lang === 'pl' ? "/" : "/en/"} aria-label="EMPAT Solutions - Home" class="focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded">
           <Image 
             src="/logo.png" 
             alt="EMPAT Solutions Logo" 
